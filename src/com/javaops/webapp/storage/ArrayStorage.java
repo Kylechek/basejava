@@ -1,27 +1,29 @@
+package com.javaops.webapp.storage;
+
+import com.javaops.webapp.model.Resume;
+
 /**
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    Resume[] storage = new Resume[10000];
-    int size = 0;
+    private Resume[] storage = new Resume[10000];
+    private int size = 0;
 
-    void clear() {
-        for (int i = size - 1; i > 0; i--) {
+    public void clear() {
+        for (int i = size - 1; i >= 0; i--) {
             storage[i] = null;
         }
         size = 0;
     }
 
-    void save(Resume r) {
-        if (storage[size] == null) {
+    public void save(Resume r) {
             storage[size] = r;
             size++;
-        }
     }
 
-    Resume get(String uuid) {
+    public Resume get(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (storage[i].uuid == uuid) {
+            if (storage[i].getUuid() == uuid) {
                 return storage[i];
             }
             i++;
@@ -29,12 +31,13 @@ public class ArrayStorage {
         return null;
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (storage[i].uuid == uuid) {
+            if (storage[i].getUuid() == uuid) {
                 storage[i] = storage[size - 1];
                 storage[size - 1] = null;
                 size--;
+                break;
             }
         }
     }
@@ -42,16 +45,15 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
-        Resume newstorage[] = new Resume[size];
+    public Resume[] getAll() {
+        Resume[] resumes = new Resume[size];
         for (int i = 0; i < size; i++) {
-            newstorage[i] = storage[i];
+            resumes[i] = storage[i];
         }
-        return newstorage;
+        return resumes;
     }
 
-    int size() {
+    public int size() {
         return size;
     }
-
 }
