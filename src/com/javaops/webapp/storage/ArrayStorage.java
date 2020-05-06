@@ -2,6 +2,8 @@ package com.javaops.webapp.storage;
 
 import com.javaops.webapp.model.Resume;
 
+import java.util.Arrays;
+
 /**
  * Array based storage for Resumes
  */
@@ -10,35 +12,52 @@ public class ArrayStorage {
     private int size = 0;
 
     public void clear() {
-        for (int i = size - 1; i >= 0; i--) {
-            storage[i] = null;
-        }
+        Arrays.fill(storage,0,size,null);
         size = 0;
     }
 
+    public void update(Resume r) {
+        int index = Index(r.getUuid());
+
+        if (index < 0) {
+            System.out.println("Resume not found");
+        } else {
+            storage[size] = r;
+        }
+    }
+
     public void save(Resume r) {
+        if (Index(r.getUuid()) > 0) {
+            System.out.println("Resume already written");
+        } else if (Index(r.getUuid())>10000) {
+            System.out.println("Storage full");
+        }
+        else {
             storage[size] = r;
             size++;
+        }
     }
 
     public Resume get(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid() == uuid) {
-                return storage[i];
-            }
-            i++;
+        int index = Index(uuid);
+
+        if (index < 0) {
+            System.out.println("Resume not found");
+        } else {
+            return storage[index];
         }
         return null;
     }
 
     public void delete(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid() == uuid) {
-                storage[i] = storage[size - 1];
-                storage[size - 1] = null;
-                size--;
-                break;
-            }
+        int index = Index(uuid);
+        
+        if (index < 0) {
+            System.out.println("Resume not found");
+        } else {
+            storage[index] = storage[size - 1];
+            storage[size - 1] = null;
+            size--;
         }
     }
 
@@ -46,14 +65,19 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     public Resume[] getAll() {
-        Resume[] resumes = new Resume[size];
-        for (int i = 0; i < size; i++) {
-            resumes[i] = storage[i];
-        }
-        return resumes;
+        return Arrays.copyOf(storage, size);
     }
 
     public int size() {
         return size;
+    }
+
+    public int Index(String uuid) {
+        for (int i = 0; i < size; i++) {
+            if (storage[i].getUuid().equals(uuid)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
