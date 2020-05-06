@@ -12,7 +12,7 @@ public class ArrayStorage {
     private int size = 0;
 
     public void clear() {
-        Arrays.fill(storage,0,size,null);
+        Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
@@ -29,10 +29,9 @@ public class ArrayStorage {
     public void save(Resume r) {
         if (Index(r.getUuid()) > 0) {
             System.out.println("Resume already written");
-        } else if (Index(r.getUuid())>10000) {
+        } else if (Index(r.getUuid()) > 10000) {
             System.out.println("Storage full");
-        }
-        else {
+        } else {
             storage[size] = r;
             size++;
         }
@@ -51,7 +50,7 @@ public class ArrayStorage {
 
     public void delete(String uuid) {
         int index = Index(uuid);
-        
+
         if (index < 0) {
             System.out.println("Resume not found");
         } else {
