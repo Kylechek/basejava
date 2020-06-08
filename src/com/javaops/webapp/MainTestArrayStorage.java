@@ -1,13 +1,13 @@
 package com.javaops.webapp;
 
 import com.javaops.webapp.model.Resume;
-import com.javaops.webapp.storage.SortedArrayStorage;
+import com.javaops.webapp.storage.ArrayStorage;
 
 /**
  * Test for your com.javaops.webapp.storage.ArrayStorage implementation
  */
 public class MainTestArrayStorage {
-    static final SortedArrayStorage ARRAY_STORAGE = new SortedArrayStorage();
+    static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
 
     public static void main(String[] args) {
         Resume r1 = new Resume("uuid1");
@@ -22,12 +22,13 @@ public class MainTestArrayStorage {
         System.out.println("Get r1: " + ARRAY_STORAGE.get(r1.getUuid()));
         System.out.println("Size: " + ARRAY_STORAGE.size());
 
-        System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
+//        System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
 
+        Resume r5 = new Resume("uuid4");
 
-        ARRAY_STORAGE.update(r4);
+        ARRAY_STORAGE.update(r5);
         printAll();
-        ARRAY_STORAGE.delete(r4.getUuid());
+        ARRAY_STORAGE.delete(r5.getUuid());
         printAll();
         ARRAY_STORAGE.clear();
         printAll();
@@ -35,7 +36,7 @@ public class MainTestArrayStorage {
         System.out.println("Size: " + ARRAY_STORAGE.size());
     }
 
-    static void printAll() {
+    public static void printAll() {
         System.out.println("\nGet All");
         for (Resume r : ARRAY_STORAGE.getAll()) {
             System.out.println(r);
