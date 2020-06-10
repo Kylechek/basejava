@@ -11,7 +11,7 @@ import java.util.Arrays;
  * Array based storage for Resumes
  */
 public abstract class AbstractArrayStorage implements Storage{
-    public final int STORAGE_LIMIT = 10000;
+    public static final int STORAGE_LIMIT = 10000;
     public Resume[] storage = new Resume[STORAGE_LIMIT];
     public int size;
 
@@ -34,7 +34,7 @@ public abstract class AbstractArrayStorage implements Storage{
     public void save(Resume resume) {
         String uuid = resume.getUuid();
 
-        if (getIndex(uuid) > 0) {
+        if (getIndex(uuid) >= 0) {
             throw new ExistStorageException(uuid);
         } else if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage overflow", resume.getUuid());
@@ -50,7 +50,7 @@ public abstract class AbstractArrayStorage implements Storage{
         int index = getIndex(uuid);
         storage[size - 1] = null;
 
-        if (index < 0) {
+        if (index <= 0) {
             throw new NotExistStorageException(uuid);
         } else {
             deleteElement(index);
