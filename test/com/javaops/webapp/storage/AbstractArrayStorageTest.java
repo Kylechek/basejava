@@ -87,7 +87,7 @@ public class AbstractArrayStorageTest {
 
     @Test
     public void get() {
-        Assert.assertEquals(storage.get(resume1.getUuid()), resume1);
+        Assert.assertEquals(resume1, storage.get(resume1.getUuid()));
     }
 
     @Test(expected = NotExistStorageException.class)
