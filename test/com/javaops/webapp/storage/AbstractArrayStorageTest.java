@@ -97,10 +97,10 @@ public class AbstractArrayStorageTest {
 
     @Test
     public void getAll() {
-        Resume[] array = storage.getAll();
-        Assert.assertEquals(resume1, array[0]);
-        Assert.assertEquals(resume2, array[1]);
-        Assert.assertEquals(resume3, array[2]);
+        Resume[] resumes = storage.getAll();
+        Assert.assertEquals(resume1, resumes[0]);
+        Assert.assertEquals(resume2, resumes[1]);
+        Assert.assertEquals(resume3, resumes[2]);
     }
 
 }
