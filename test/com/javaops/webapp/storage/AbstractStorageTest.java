@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class AbstractStorageTest {
+public abstract class AbstractStorageTest {
 
     private static final String UUID_1 = "uuid1";
     private static final Resume resume1 = new Resume(UUID_1);
@@ -59,7 +59,8 @@ public class AbstractStorageTest {
     public void saveExist() {
         storage.save(resume1);
     }
-    @Test (expected = NotExistStorageException.class)
+
+    @Test(expected = NotExistStorageException.class)
     public void delete() {
         storage.delete(resume2.getUuid());
         Assert.assertEquals(storage.size(), 2);
@@ -67,8 +68,7 @@ public class AbstractStorageTest {
     }
 
 
-
-    @Test (expected = NotExistStorageException.class)
+    @Test(expected = NotExistStorageException.class)
     public void deleteNotExist() {
         storage.delete(resume4.getUuid());
     }
