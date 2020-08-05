@@ -2,8 +2,7 @@ package com.javaops.webapp.storage;
 
 import com.javaops.webapp.model.Resume;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MapStorage extends AbstractStorage{
 
@@ -30,13 +29,14 @@ public class MapStorage extends AbstractStorage{
     }
 
     @Override
-    protected void doDelete(Object searchKey) {
-        map.remove(searchKey);
+    protected void doDelete(Object resume) {
+        System.out.println(((Resume)resume).getUuid());
+        map.remove(((Resume)resume).getUuid());
     }
 
     @Override
-    protected Resume doGet(Object searchKey) {
-        return map.get(searchKey);
+    protected Resume doGet(Object resume) {
+        return (Resume) resume;
     }
 
     @Override
@@ -46,7 +46,9 @@ public class MapStorage extends AbstractStorage{
 
     @Override
     public Resume[] getAll() {
-        return new Resume[0];
+        List<Resume> result = new ArrayList(map.values());
+        Collections.sort(result);
+        return result.toArray(new Resume[result.size()]);
     }
 
     @Override
