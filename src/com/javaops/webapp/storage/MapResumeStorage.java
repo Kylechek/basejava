@@ -4,7 +4,7 @@ import com.javaops.webapp.model.Resume;
 
 import java.util.*;
 
-public class MapStorage extends AbstractStorage{
+public class MapResumeStorage extends AbstractStorage{
 
     private Map<String, Resume> map = new HashMap<>();
 
@@ -30,7 +30,6 @@ public class MapStorage extends AbstractStorage{
 
     @Override
     protected void doDelete(Object resume) {
-        System.out.println(((Resume)resume).getUuid());
         map.remove(((Resume)resume).getUuid());
     }
 
@@ -45,10 +44,10 @@ public class MapStorage extends AbstractStorage{
     }
 
     @Override
-    public Resume[] getAll() {
+    public List<Resume> getAllSorted() {
         List<Resume> result = new ArrayList(map.values());
         Collections.sort(result);
-        return result.toArray(new Resume[result.size()]);
+        return result;
     }
 
     @Override
