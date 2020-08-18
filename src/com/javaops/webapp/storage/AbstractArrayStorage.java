@@ -56,15 +56,14 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         return size;
     }
 
-    public List<Resume> getAllSorted() {
+    @Override
+    protected List<Resume> doSorted() {
         List<Resume> list = new ArrayList<>();
         for( int i =0; i <size; i++) {
             list.add(storage[i]);
         }
         return list;
     }
-
-
 
     protected abstract Integer getSearchKey(String uuid);
     protected abstract void saveElement(Resume resume, int index);

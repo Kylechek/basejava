@@ -44,10 +44,10 @@ public class MapUuidStorage extends AbstractStorage {
     }
 
     @Override
-    public List<Resume> getAllSorted() {
-        List<Resume> result = new ArrayList(map.values());
-        Collections.sort(result);
-        return result;
+    protected List<Resume> doSorted() {
+            List<Resume> result = new ArrayList(map.values());
+            Collections.sort(result);
+            return result;
     }
 
     @Override
