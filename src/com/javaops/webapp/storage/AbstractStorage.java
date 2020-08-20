@@ -4,6 +4,7 @@ import com.javaops.webapp.exeption.ExistStorageException;
 import com.javaops.webapp.exeption.NotExistStorageException;
 import com.javaops.webapp.model.Resume;
 
+import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractStorage implements Storage {
@@ -43,7 +44,9 @@ public abstract class AbstractStorage implements Storage {
     }
 
     public List<Resume> getAllSorted() {
-        return doSorted();
+        List<Resume> list = doSorted();
+        Collections.sort(list);
+        return list;
     }
 
     private Object getExistedSearchKey(String uuid) {

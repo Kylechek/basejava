@@ -20,7 +20,7 @@ public class MapUuidStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object uuid) {
-        map.put((String) uuid,resume);
+        map.put((String) uuid, resume);
     }
 
     @Override
@@ -45,9 +45,8 @@ public class MapUuidStorage extends AbstractStorage {
 
     @Override
     protected List<Resume> doSorted() {
-            List<Resume> result = new ArrayList(map.values());
-            Collections.sort(result);
-            return result;
+        List<Resume> result = new ArrayList(map.values());
+        return result;
     }
 
     @Override
