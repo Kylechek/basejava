@@ -4,38 +4,38 @@ import com.javaops.webapp.model.Resume;
 
 import java.util.*;
 
-public class MapResumeStorage extends AbstractStorage{
+public class MapResumeStorage extends AbstractStorage<Resume> {
 
     private Map<String, Resume> map = new HashMap<>();
 
     @Override
-    protected void doSave(Resume resume, Object searchKey) {
-        map.put(resume.getUuid(),resume);
+    protected void doSave(Resume resume, Resume searchKey) {
+        map.put(resume.getUuid(), resume);
     }
 
     @Override
-    protected Object getSearchKey(String uuid) {
+    protected Resume getSearchKey(String uuid) {
         return map.get(uuid);
     }
 
     @Override
-    protected void doUpdate(Resume resume, Object searchKey) {
-        map.put(resume.getUuid(),resume);
+    protected void doUpdate(Resume resume, Resume searchKey) {
+        map.put(resume.getUuid(), resume);
     }
 
     @Override
-    protected boolean isExist(Object searchKey) {
+    protected boolean isExist(Resume searchKey) {
         return searchKey != null;
     }
 
     @Override
-    protected void doDelete(Object resume) {
-        map.remove(((Resume)resume).getUuid());
+    protected void doDelete(Resume resume) {
+        map.remove((resume).getUuid());
     }
 
     @Override
-    protected Resume doGet(Object resume) {
-        return (Resume) resume;
+    protected Resume doGet(Resume resume) {
+        return resume;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class MapResumeStorage extends AbstractStorage{
     }
 
     @Override
-    protected List<Resume> doSorted() {
-        return new ArrayList(map.values());
+    protected List<Resume> doCopy() {
+        return new ArrayList<>(map.values());
     }
 
     @Override

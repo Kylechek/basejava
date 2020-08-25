@@ -10,41 +10,41 @@ import java.util.List;
 /**
  * Array based storage for Resumes
  */
-public abstract class AbstractArrayStorage extends AbstractStorage {
+public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
     public static final int STORAGE_LIMIT = 10000;
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
     protected int size;
 
     @Override
-    protected void doUpdate(Resume resume, Object searchKey) {
-        storage[(Integer) searchKey] = resume;
+    protected void doUpdate(Resume resume, Integer searchKey) {
+        storage[searchKey] = resume;
     }
 
     @Override
-    protected void doSave(Resume resume, Object searchKey) {
+    protected void doSave(Resume resume, Integer searchKey) {
         if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage overflow", resume.getUuid());
         } else {
-            saveElement(resume, (Integer) searchKey);
+            saveElement(resume, searchKey);
             size++;
         }
     }
 
     @Override
-    public void doDelete(Object searchKey) {
-        deleteElement((Integer) searchKey);
+    public void doDelete(Integer searchKey) {
+        deleteElement(searchKey);
         storage[size - 1] = null;
         size--;
     }
 
     @Override
-    public Resume doGet(Object searchKey) {
-        return storage[(Integer) searchKey];
+    public Resume doGet(Integer searchKey) {
+        return storage[searchKey];
     }
 
     @Override
-    protected boolean isExist(Object searchKey) {
-        return (Integer) searchKey >= 0;
+    protected boolean isExist(Integer searchKey) {
+        return searchKey >= 0;
     }
 
     public void clear() {
@@ -57,15 +57,17 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    protected List<Resume> doSorted() {
+    protected List<Resume> doCopy() {
         List<Resume> list = new ArrayList<>();
-        for( int i =0; i <size; i++) {
+        for (int i = 0; i < size; i++) {
             list.add(storage[i]);
         }
         return list;
     }
 
     protected abstract Integer getSearchKey(String uuid);
+
     protected abstract void saveElement(Resume resume, int index);
+
     protected abstract void deleteElement(int index);
 }
