@@ -1,7 +1,6 @@
 package com.javaops.webapp.model;
 
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Initial resume class
@@ -12,6 +11,13 @@ public class Resume implements Comparable<Resume>{
     private final String uuid;
 
     private final String fullName;
+
+    private final Map<ContactType, String> contacts = new EnumMap<ContactType, String>(ContactType.class);
+    private final Map<SectionType, Section> sections = new EnumMap<SectionType, Section>(SectionType.class);
+
+    public Map<ContactType, String> getContacts() {
+        return contacts;
+    }
 
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
