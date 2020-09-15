@@ -3,7 +3,6 @@ package com.javaops.webapp;
 import com.javaops.webapp.model.*;
 
 import java.time.YearMonth;
-import java.util.Collections;
 
 public class ResumeTestData {
     public static void main(String[] args) {
@@ -25,9 +24,11 @@ public class ResumeTestData {
                 "Создание JavaEE фреймворка для отказоустойчивого взаимодействия слабо-связанных сервисов (SOA-base архитектура, JAX-WS, JMS, AS Glassfish). Сбор статистики сервисов и информации о состоянии через систему мониторинга Nagios. Реализация онлайн клиента для администрирования и мониторинга системы по JMX (Jython/ Django).",
                 "Реализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа."));
         resume.addSection(SectionType.QUALIFICATIONS, new ListSection("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2"));
-        resume.addSection(SectionType.EXPERIENCE, new  OrganizationsSection(new Organizations(new Link("Java Online Projects", "http://javaops.ru"), "Автор проекта.",
-                "Создание, организация и проведение Java онлайн проектов и стажировок.", YearMonth.of(2013, 10), YearMonth.now())));
-        resume.addSection(SectionType.EDUCATION, new OrganizationsSection(new Organizations(new Link("Coursera","https://www.coursera.org/course/progfun"),"Functional Programming Principles in Scala by Martin Odersky","",YearMonth.of(2013, 03), YearMonth.of(2013,05))));
-        System.out.println(resume.getSections(SectionType.EDUCATION));
+        resume.addSection(SectionType.EXPERIENCE, new OrganizationSection(new Organization(new Link("Java Online Projects", "http://javaops.ru"), "Автор проекта.",
+                "Создание, организация и проведение Java онлайн проектов и стажировок.", YearMonth.of(2013, 10), YearMonth.now()),
+                new Organization(new Link("Java Online Projects", "http://javaops.ru"), "Автор проекта.",
+                        "Создание, организация и проведение Java онлайн проектов и стажировок.", YearMonth.of(2013, 10), YearMonth.now())));
+        resume.addSection(SectionType.EDUCATION, new OrganizationSection(new Organization(new Link("Coursera", "https://www.coursera.org/course/progfun"), "Functional Programming Principles in Scala by Martin Odersky", "", YearMonth.of(2013, 03), YearMonth.of(2013, 05))));
+
     }
 }
