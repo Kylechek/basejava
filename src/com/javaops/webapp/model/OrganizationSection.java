@@ -3,14 +3,14 @@ package com.javaops.webapp.model;
 import java.util.Arrays;
 import java.util.List;
 
-public class OrganizationAbstractSection extends AbstractSection {
+public class OrganizationSection extends AbstractSection {
     private List<Organization> organizations;
 
-    public OrganizationAbstractSection(Organization... organizations) {
+    public OrganizationSection(Organization... organizations) {
         this(Arrays.asList(organizations));
     }
 
-    public OrganizationAbstractSection(List<Organization> organizations) {
+    public OrganizationSection(List<Organization> organizations) {
         this.organizations = organizations;
     }
 
