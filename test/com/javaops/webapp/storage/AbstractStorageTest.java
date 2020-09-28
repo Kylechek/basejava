@@ -1,5 +1,6 @@
 package com.javaops.webapp.storage;
 
+import com.javaops.webapp.ResumeTestData;
 import com.javaops.webapp.exeption.ExistStorageException;
 import com.javaops.webapp.exeption.NotExistStorageException;
 import com.javaops.webapp.model.Resume;
@@ -12,7 +13,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 
-public abstract class AbstractStorageTest {
+public abstract class AbstractStorageTest extends ResumeTestData {
 
     Storage storage;
 
@@ -27,10 +28,10 @@ public abstract class AbstractStorageTest {
     private static final Resume RESUME_4;
 
     static {
-        RESUME_1 = new Resume(UUID_1, "fullName1");
-        RESUME_2 = new Resume(UUID_2, "fullName2");
-        RESUME_3 = new Resume(UUID_3, "fullName3");
-        RESUME_4 = new Resume(UUID_4, "fullName4");
+        RESUME_1 = addResume(UUID_1, "fullName1");
+        RESUME_2 = addResume(UUID_2, "fullName2");
+        RESUME_3 = addResume(UUID_3, "fullName3");
+        RESUME_4 = addResume(UUID_4, "fullName4");
     }
 
     protected AbstractStorageTest(Storage storage) {
