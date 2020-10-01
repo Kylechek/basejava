@@ -58,11 +58,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
 
     @Override
     protected List<Resume> doCopy() {
-        List<Resume> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            list.add(storage[i]);
-        }
-        return list;
+        return Arrays.asList(Arrays.copyOfRange(storage, 0, size));
     }
 
     protected abstract Integer getSearchKey(String uuid);
