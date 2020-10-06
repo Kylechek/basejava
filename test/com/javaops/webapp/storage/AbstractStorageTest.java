@@ -28,10 +28,10 @@ public abstract class AbstractStorageTest extends ResumeTestData {
     private static final Resume RESUME_4;
 
     static {
-        RESUME_1 = addResume(UUID_1, "fullName1");
-        RESUME_2 = addResume(UUID_2, "fullName2");
-        RESUME_3 = addResume(UUID_3, "fullName3");
-        RESUME_4 = addResume(UUID_4, "fullName4");
+        RESUME_1 = fillOutResume(UUID_1, "fullName1");
+        RESUME_2 = fillOutResume(UUID_2, "fullName2");
+        RESUME_3 = fillOutResume(UUID_3, "fullName3");
+        RESUME_4 = fillOutResume(UUID_4, "fullName4");
     }
 
     protected AbstractStorageTest(Storage storage) {

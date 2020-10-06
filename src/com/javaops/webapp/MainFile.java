@@ -1,45 +1,24 @@
 package com.javaops.webapp;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
-import java.io.PrintStream;
 
 public class MainFile {
-    public static void findFiles(File file, FileFilter filter,
-                                 PrintStream output) throws IOException {
-        if (file.isDirectory()) {
-            File[] list = file.listFiles();
-            for (int i = list.length; --i >= 0; ) {
-                findFiles(list[i], filter, output);
-            }
-        } else {
-            if (filter.accept(file))
-                output.println("\t" + file.getCanonicalPath());
-        }
-    }
-
     public static void main(String[] args) {
-        class NameFilter implements FileFilter {
-            private String mask;
+        File dir = new File("./src/com/javaops/webapp");
+        findFiles(dir);
+    }
+    public static void findFiles(File dir) {
+        File[] files = dir.listFiles();
 
-            NameFilter(String mask) {
-                this.mask = mask;
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    System.out.println(file.getName());
+                } else if (file.isDirectory()) {
+                    findFiles(file);
+                }
             }
-
-            public boolean accept(File file) {
-                return file.getName().contains(mask);
-            }
-        }
-        File pathFile = new File(".");
-        String filterString = ".java";
-        try {
-            FileFilter filter = new NameFilter(filterString);
-            findFiles(pathFile, filter, System.out);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
+

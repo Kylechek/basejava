@@ -5,7 +5,7 @@ import com.javaops.webapp.model.*;
 import java.time.YearMonth;
 
 public class ResumeTestData {
-        public static Resume addResume(String uuid, String fullname){
+        public static Resume fillOutResume(String uuid, String fullname){
             Resume resume = new Resume(uuid, fullname);
             resume.addContact(ContactType.TEL, "+7(921) 855-0482");
             resume.addContact(ContactType.SKYPE, "grigory.kislin");
