@@ -54,7 +54,7 @@ public abstract class AbstractStorageTest extends ResumeTestData {
 
     @Test
     public void update() {
-        Resume resume = new Resume(UUID_1, "fullname1");
+        Resume resume = fillOutResume(UUID_1, "fullname1");
         storage.update(resume);
         assertEquals(resume, storage.get(UUID_1));
     }
