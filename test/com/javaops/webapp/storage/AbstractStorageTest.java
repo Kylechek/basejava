@@ -7,6 +7,7 @@ import com.javaops.webapp.model.Resume;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public abstract class AbstractStorageTest extends ResumeTestData {
+    protected static final File STORAGE_DIR = new File("C:\\projects");
 
     Storage storage;
 
