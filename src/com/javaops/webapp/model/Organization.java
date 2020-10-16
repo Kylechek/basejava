@@ -28,6 +28,20 @@ public class Organization implements Serializable {
         return homePage + ", " + positions;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organization that = (Organization) o;
+        return homePage.equals(that.homePage) &&
+                positions.equals(that.positions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(homePage, positions);
+    }
+
     public static class Position implements Serializable{
         private final String title;
         private final String description;
@@ -45,19 +59,21 @@ public class Organization implements Serializable {
         public String toString() {
             return title + description + startDate + endDate;
         }
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Organization that = (Organization) o;
-        return homePage.equals(that.homePage) &&
-                positions.equals(that.positions);
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Position position = (Position) o;
+            return title.equals(position.title) &&
+                    description.equals(position.description) &&
+                    startDate.equals(position.startDate) &&
+                    endDate.equals(position.endDate);
+        }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(homePage, positions);
+        @Override
+        public int hashCode() {
+            return Objects.hash(title, description, startDate, endDate);
+        }
     }
 }
