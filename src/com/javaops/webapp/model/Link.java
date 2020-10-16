@@ -1,8 +1,10 @@
 package com.javaops.webapp.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Link implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     private final String name;
@@ -13,12 +15,18 @@ public class Link implements Serializable {
         this.url = url;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Link link = (Link) o;
+        return name.equals(link.name) &&
+                url.equals(link.url);
     }
 
-    public String getUrl() {
-        return url;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, url);
     }
 
     @Override

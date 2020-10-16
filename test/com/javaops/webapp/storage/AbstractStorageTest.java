@@ -8,13 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 import static org.junit.Assert.assertEquals;
 
 
 public abstract class AbstractStorageTest extends ResumeTestData {
+
     protected static final File STORAGE_DIR = new File("C:\\projects");
 
     Storage storage;
@@ -107,7 +109,7 @@ public abstract class AbstractStorageTest extends ResumeTestData {
 
     @Test
     public void getAll() {
-        List<Resume> expectedResumes = Arrays.asList(RESUME_1, RESUME_2, RESUME_3);
+        ArrayList<Resume> expectedResumes = new ArrayList<Resume>(Arrays.asList(RESUME_1, RESUME_2, RESUME_3));
         assertEquals(expectedResumes, storage.getAllSorted());
     }
 }

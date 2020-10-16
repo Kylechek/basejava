@@ -5,6 +5,7 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Organization implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -44,5 +45,19 @@ public class Organization implements Serializable {
         public String toString() {
             return title + description + startDate + endDate;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organization that = (Organization) o;
+        return homePage.equals(that.homePage) &&
+                positions.equals(that.positions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(homePage, positions);
     }
 }
