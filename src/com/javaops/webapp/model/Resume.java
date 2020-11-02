@@ -64,13 +64,12 @@ public class Resume implements Comparable<Resume>, Serializable {
         Resume resume = (Resume) o;
         return uuid.equals(resume.uuid) &&
                 fullName.equals(resume.fullName) &&
-                contacts.equals(resume.contacts) &&
-                sections.equals(resume.sections);
+                contacts.equals(resume.contacts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, fullName, contacts, sections);
+        return Objects.hash(uuid, fullName, contacts);
     }
 
     @Override

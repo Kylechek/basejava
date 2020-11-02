@@ -23,7 +23,6 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     protected void doSave(Resume resume, File file) {
         try {
             file.createNewFile();
-            doWrite(resume, new BufferedOutputStream(new FileOutputStream(file)));
         } catch (IOException e) {
             throw new StorageException("Couldn't create file " + file.getAbsolutePath(), file.getName());
         }
@@ -46,7 +45,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
 
     @Override
     protected boolean isExist(File file) {
-        return false;
+        return file.exists();
     }
 
     @Override
@@ -66,10 +65,10 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     @Override
     protected List<Resume> doCopy() {
         File[] files = directory.listFiles();
-        List<Resume> list = new ArrayList<>(files.length);
         if (files == null) {
-            throw new StorageException("Directory hasn't files", null);
+            throw new StorageException("Directory is empty", null);
         }
+        List<Resume> list = new ArrayList<>(files.length);
         for (File file : files) {
             list.add(doGet(file));
         }
