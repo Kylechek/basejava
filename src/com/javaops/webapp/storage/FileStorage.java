@@ -2,22 +2,21 @@ package com.javaops.webapp.storage;
 
 import com.javaops.webapp.exeption.StorageException;
 import com.javaops.webapp.model.Resume;
+import com.javaops.webapp.storage.serializer.StreamSerializer;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractFileStorage extends AbstractStorage<File> {
+public class FileStorage extends AbstractStorage<File> {
 
     public File directory;
+    private final StreamSerializer streamSerializer;
 
-    protected AbstractFileStorage(File directory) {
+    protected FileStorage(File directory, StreamSerializer streamSerializer) {
+        this.streamSerializer = streamSerializer;
         this.directory = directory;
     }
-
-    protected abstract void doWrite(Resume resume, OutputStream file) throws IOException;
-
-    protected abstract Resume doRead(InputStream file) throws IOException;
 
     @Override
     protected void doSave(Resume resume, File file) {
@@ -37,7 +36,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     @Override
     protected void doUpdate(Resume resume, File file) {
         try {
-            doWrite(resume, new BufferedOutputStream(new FileOutputStream(file)));
+            streamSerializer.doWrite(resume, new BufferedOutputStream(new FileOutputStream(file)));
         } catch (IOException e) {
             throw new StorageException("File write error", resume.getUuid());
         }
@@ -56,7 +55,7 @@ public abstract class AbstractFileStorage extends AbstractStorage<File> {
     @Override
     protected Resume doGet(File file) {
         try {
-            return doRead(new BufferedInputStream(new FileInputStream(file)));
+            return streamSerializer.doRead(new BufferedInputStream(new FileInputStream(file)));
         } catch (IOException e) {
             throw new StorageException("File read error", file.getName());
         }
