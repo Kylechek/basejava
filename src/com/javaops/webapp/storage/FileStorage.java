@@ -57,7 +57,7 @@ public class FileStorage extends AbstractStorage<File> {
         try {
             return streamSerializer.doRead(new BufferedInputStream(new FileInputStream(file)));
         } catch (IOException e) {
-            throw new StorageException("File read error", file.getName());
+            throw new StorageException("File read error", file.getName(), e);
         }
     }
 
