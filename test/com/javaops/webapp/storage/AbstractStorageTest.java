@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractStorageTest extends ResumeTestData {
 
-    protected static final File STORAGE_DIR = new File("C:\\projects");
+    protected static final File STORAGE_DIR = new File("C:\\Users\\ikoni\\Documents\\javaProjects\\resume");
 
     Storage storage;
 
