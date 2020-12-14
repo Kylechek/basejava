@@ -2,6 +2,7 @@ package com.javaops.webapp;
 
 import com.javaops.webapp.model.*;
 
+import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class ResumeTestData {
@@ -25,10 +26,10 @@ public class ResumeTestData {
                     "Реализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа."));
             resume.addSection(SectionType.QUALIFICATIONS, new ListSection("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2"));
             resume.addSection(SectionType.EXPERIENCE, new OrganizationSection(new Organization("Java Online Projects", "http://javaops.ru", new Organization.Position("Автор проекта.",
-                    "Создание, организация и проведение Java онлайн проектов и стажировок.", YearMonth.of(2013, 10), YearMonth.now())),
+                    "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10,1), LocalDate.of(2020, 12,1))),
                     new Organization("Java Online Projects", "http://javaops.ru", new Organization.Position("Автор проекта.",
-                            "Создание, организация и проведение Java онлайн проектов и стажировок.", YearMonth.of(2013, 10), YearMonth.now()))));
-            resume.addSection(SectionType.EDUCATION, new OrganizationSection(new Organization("Coursera", "https://www.coursera.org/course/progfun", new Organization.Position("Functional Programming Principles in Scala by Martin Odersky", "", YearMonth.of(2013, 03), YearMonth.of(2013, 05)))));
+                            "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10,1), LocalDate.of(2020, 12,1)))));
+            resume.addSection(SectionType.EDUCATION, new OrganizationSection(new Organization("Coursera", "https://www.coursera.org/course/progfun", new Organization.Position("Functional Programming Principles in Scala by Martin Odersky", "", LocalDate.of(2013, 03,1), LocalDate.of(2013, 05,1)))));
 
             System.out.println(resume.getContacts());
             System.out.println(resume.getSections(SectionType.PERSONAL));

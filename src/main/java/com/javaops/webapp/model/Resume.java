@@ -1,22 +1,30 @@
 package com.javaops.webapp.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.*;
 
 /**
  * Initial resume class
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Resume implements Comparable<Resume>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
     // Unique identifier
-    private final String uuid;
+    private String uuid;
 
-    private final String fullName;
+    private String fullName;
 
     private final Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
     private final Map<SectionType, AbstractSection> sections = new EnumMap<>(SectionType.class);
+
+    public Resume() {
+    }
 
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
@@ -41,6 +49,14 @@ public class Resume implements Comparable<Resume>, Serializable {
         return sections.get(type);
     }
 
+    public Map<SectionType, AbstractSection> getSections() {
+        return sections;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
     public void addContact(ContactType type, String value) {
         contacts.put(type, value);
     }
@@ -56,6 +72,8 @@ public class Resume implements Comparable<Resume>, Serializable {
     public AbstractSection getSection(SectionType type) {
         return sections.get(type);
     }
+
+
 
 
     @Override
@@ -81,4 +99,6 @@ public class Resume implements Comparable<Resume>, Serializable {
         int compare = fullName.compareTo(resume.fullName);
         return compare != 0 ? compare: uuid.compareTo(resume.uuid);
     }
+
+
 }

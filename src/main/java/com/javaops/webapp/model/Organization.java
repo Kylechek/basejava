@@ -1,18 +1,24 @@
 package com.javaops.webapp.model;
 
+import com.javaops.webapp.util.LocalDateAdapter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
-import java.time.YearMonth;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Organization implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private final Link homePage;
+    private Link homePage;
     private List<Position> positions = new ArrayList<>();
 
+    public Organization() {
+    }
 
     public Organization(Link homePage, List<Position> positions) {
         this.homePage = homePage;
@@ -21,6 +27,14 @@ public class Organization implements Serializable {
 
     public Organization(String name, String url, Position... positions) {
         this(new Link(name, url), Arrays.asList(positions));
+    }
+
+    public Link getHomePage() {
+        return homePage;
+    }
+
+    public List<Position> getPositions() {
+        return positions;
     }
 
     @Override
@@ -41,18 +55,38 @@ public class Organization implements Serializable {
     public int hashCode() {
         return Objects.hash(homePage, positions);
     }
-
+    @XmlAccessorType(XmlAccessType.FIELD)
     public static class Position implements Serializable{
-        private final String title;
-        private final String description;
-        private final YearMonth startDate;
-        private final YearMonth endDate;
+        private String title;
+        private String description;
+        @XmlJavaTypeAdapter(LocalDateAdapter.class)
+        private LocalDate startDate;
+        @XmlJavaTypeAdapter(LocalDateAdapter.class)
+        private LocalDate endDate;
 
-        public Position(String title, String description, YearMonth startDate, YearMonth endDate) {
+        public Position() {
+        }
+        public Position(String title, String description, LocalDate startDate, LocalDate endDate) {
             this.title = title;
             this.description = description;
             this.startDate = startDate;
             this.endDate = endDate;
+        }
+
+        public LocalDate getStartDate() {
+            return startDate;
+        }
+
+        public LocalDate getEndDate() {
+            return endDate;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getDescription() {
+            return description;
         }
 
         @Override

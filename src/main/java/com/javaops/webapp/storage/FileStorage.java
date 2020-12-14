@@ -65,7 +65,7 @@ public class FileStorage extends AbstractStorage<File> {
     protected List<Resume> doCopy() {
         File[] files = directory.listFiles();
         if (files == null) {
-            throw new StorageException("Directory is empty", null);
+            throw new StorageException("Directory is empty");
         }
         List<Resume> list = new ArrayList<>(files.length);
         for (File file : files) {
@@ -88,7 +88,7 @@ public class FileStorage extends AbstractStorage<File> {
     public int size() {
         String[] list = directory.list();
         if (list == null) {
-            throw new StorageException("Directory is empty", null);
+            throw new StorageException("Directory is empty");
         }
         return list.length;
     }
