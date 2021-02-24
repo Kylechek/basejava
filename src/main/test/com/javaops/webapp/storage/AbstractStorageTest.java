@@ -1,5 +1,6 @@
 package com.javaops.webapp.storage;
 
+import com.javaops.webapp.Config;
 import com.javaops.webapp.ResumeTestData;
 import com.javaops.webapp.exeption.ExistStorageException;
 import com.javaops.webapp.exeption.NotExistStorageException;
@@ -11,13 +12,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 import static org.junit.Assert.assertEquals;
 
 
 public abstract class AbstractStorageTest extends ResumeTestData {
 
-    protected static final File STORAGE_DIR = new File("C:\\Users\\ikoni\\Documents\\javaProjects\\resume");
+    protected static final File STORAGE_DIR = Config.get().getStorageDir();
 
     Storage storage;
 

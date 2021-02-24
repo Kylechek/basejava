@@ -3,7 +3,6 @@ package com.javaops.webapp.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.javaops.webapp.model.AbstractSection;
-import com.javaops.webapp.model.TextSection;
 
 import java.io.Reader;
 import java.io.Writer;

@@ -2,7 +2,7 @@ package com.javaops.webapp;
 
 
 public class DeadLock {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         Object objectOne = 1;
         Object objectTwo = 2;

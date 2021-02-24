@@ -1,13 +1,11 @@
 package com.javaops.webapp;
 
-import com.javaops.webapp.model.*;
-
-import java.time.LocalDate;
-import java.time.YearMonth;
+import com.javaops.webapp.model.Resume;
 
 public class ResumeTestData {
         public static Resume fillOutResume(String uuid, String fullname){
             Resume resume = new Resume(uuid, fullname);
+/*
             resume.addContact(ContactType.TEL, "+7(921) 855-0482");
             resume.addContact(ContactType.SKYPE, "grigory.kislin");
             resume.addContact(ContactType.EMAIL, "gkislin@yandex.ru");
@@ -38,6 +36,7 @@ public class ResumeTestData {
             System.out.println(resume.getSections(SectionType.QUALIFICATIONS));
             System.out.println(resume.getSections(SectionType.EXPERIENCE));
             System.out.println(resume.getSections(SectionType.EDUCATION));
+*/
             return resume;
     }
 }
