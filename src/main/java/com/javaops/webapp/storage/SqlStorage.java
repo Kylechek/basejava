@@ -30,8 +30,11 @@ public class SqlStorage implements Storage {
     public void update(Resume resume) {
         try(Connection conn = connectionFactory.getConnection();
             PreparedStatement ps = conn.prepareStatement("UPDATE resume SET full_name = ? WHERE uuid = ?")){
-            ps.setString(1, resume.getUuid());
-            ps.setString(2, resume.getFullName());
+            ps.setString(2, resume.getUuid());
+            ps.setString(1, resume.getFullName());
+            if (ps.executeUpdate() == 0) {
+                throw new NotExistStorageException(resume.getUuid());
+            }
         } catch (SQLException e) {
             throw new StorageException(e);
         }
