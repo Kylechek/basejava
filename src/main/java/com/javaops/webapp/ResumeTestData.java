@@ -1,11 +1,11 @@
 package com.javaops.webapp;
 
-import com.javaops.webapp.model.Resume;
+import com.javaops.webapp.model.*;
 
 public class ResumeTestData {
         public static Resume fillOutResume(String uuid, String fullname){
             Resume resume = new Resume(uuid, fullname);
-/*
+
             resume.addContact(ContactType.TEL, "+7(921) 855-0482");
             resume.addContact(ContactType.SKYPE, "grigory.kislin");
             resume.addContact(ContactType.EMAIL, "gkislin@yandex.ru");
@@ -23,20 +23,21 @@ public class ResumeTestData {
                     "Создание JavaEE фреймворка для отказоустойчивого взаимодействия слабо-связанных сервисов (SOA-base архитектура, JAX-WS, JMS, AS Glassfish). Сбор статистики сервисов и информации о состоянии через систему мониторинга Nagios. Реализация онлайн клиента для администрирования и мониторинга системы по JMX (Jython/ Django).",
                     "Реализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа."));
             resume.addSection(SectionType.QUALIFICATIONS, new ListSection("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2"));
+/*
             resume.addSection(SectionType.EXPERIENCE, new OrganizationSection(new Organization("Java Online Projects", "http://javaops.ru", new Organization.Position("Автор проекта.",
                     "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10,1), LocalDate.of(2020, 12,1))),
                     new Organization("Java Online Projects", "http://javaops.ru", new Organization.Position("Автор проекта.",
                             "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10,1), LocalDate.of(2020, 12,1)))));
             resume.addSection(SectionType.EDUCATION, new OrganizationSection(new Organization("Coursera", "https://www.coursera.org/course/progfun", new Organization.Position("Functional Programming Principles in Scala by Martin Odersky", "", LocalDate.of(2013, 03,1), LocalDate.of(2013, 05,1)))));
+*/
 
-            System.out.println(resume.getContacts());
-            System.out.println(resume.getSections(SectionType.PERSONAL));
+/*            System.out.println(resume.getContacts());
+*//*            System.out.println(resume.getSections(SectionType.PERSONAL));
             System.out.println(resume.getSections(SectionType.OBJECTIVE));
             System.out.println(resume.getSections(SectionType.ACHIEVEMENT));
             System.out.println(resume.getSections(SectionType.QUALIFICATIONS));
             System.out.println(resume.getSections(SectionType.EXPERIENCE));
-            System.out.println(resume.getSections(SectionType.EDUCATION));
-*/
+            System.out.println(resume.getSections(SectionType.EDUCATION));*/
             return resume;
     }
 }

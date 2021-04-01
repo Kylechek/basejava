@@ -4,6 +4,7 @@ import com.javaops.webapp.Config;
 import com.javaops.webapp.ResumeTestData;
 import com.javaops.webapp.exeption.ExistStorageException;
 import com.javaops.webapp.exeption.NotExistStorageException;
+import com.javaops.webapp.model.ContactType;
 import com.javaops.webapp.model.Resume;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,13 +61,16 @@ public abstract class AbstractStorageTest extends ResumeTestData {
     @Test
     public void update() {
         Resume resume = fillOutResume(UUID_1, "fullname1");
+        RESUME_1.addContact(ContactType.EMAIL, "mail1@google.com");
+        RESUME_1.addContact(ContactType.SKYPE, "NewSkype");
+        RESUME_1.addContact(ContactType.TEL, "+7 921 222-22-22");
         storage.update(resume);
         assertEquals(resume, storage.get(UUID_1));
     }
 
     @Test(expected = NotExistStorageException.class)
     public void updateNotExist() {
-        storage.update(RESUME_4);
+        storage.get("dummy");
     }
 
     @Test
@@ -77,7 +81,7 @@ public abstract class AbstractStorageTest extends ResumeTestData {
     }
 
     @Test(expected = ExistStorageException.class)
-    public void saveExist() {
+    public void saveExist() throws Exception{
         storage.save(RESUME_1);
     }
 
@@ -111,6 +115,6 @@ public abstract class AbstractStorageTest extends ResumeTestData {
     @Test
     public void getAll() {
         ArrayList<Resume> expectedResumes = new ArrayList<Resume>(Arrays.asList(RESUME_1, RESUME_2, RESUME_3));
-        assertEquals(expectedResumes, storage.getAllSorted());
+        assertEquals(storage.getAllSorted(), expectedResumes);
     }
 }
