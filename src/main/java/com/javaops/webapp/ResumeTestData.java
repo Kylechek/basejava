@@ -2,6 +2,8 @@ package com.javaops.webapp;
 
 import com.javaops.webapp.model.*;
 
+import java.time.LocalDate;
+
 public class ResumeTestData {
         public static Resume fillOutResume(String uuid, String fullname){
             Resume resume = new Resume(uuid, fullname);
@@ -14,8 +16,8 @@ public class ResumeTestData {
             resume.addContact(ContactType.STACKOVERFLOW, "https://stackoverflow.com/users/548473");
             resume.addContact(ContactType.HOMEPAGE, "http://gkislin.ru/");
 
-            resume.addSection(SectionType.PERSONAL, new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям"));
-            resume.addSection(SectionType.OBJECTIVE, new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры."));
+            resume.addSection(SectionType.PERSONAL, new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры."));
+            resume.addSection(SectionType.OBJECTIVE, new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям"));
             resume.addSection(SectionType.ACHIEVEMENT, new ListSection("С 2013 года: разработка проектов \"Разработка Web приложения\",\"Java Enterprise\", \"Многомодульный maven. Многопоточность. XML (JAXB/StAX). Веб сервисы (JAX-RS/SOAP). Удаленное взаимодействие (JMS/AKKA)\". Организация онлайн стажировок и ведение проектов. Более 1000 выпускников.",
                     "Реализация двухфакторной аутентификации для онлайн платформы управления проектами Wrike. Интеграция с Twilio, DuoSecurity, Google Authenticator, Jira, Zendesk.",
                     "Налаживание процесса разработки и непрерывной интеграции ERP системы River BPM. Интеграция с 1С, Bonita BPM, CMIS, LDAP. Разработка приложения управления окружением на стеке: Scala/Play/Anorm/JQuery. Разработка SSO аутентификации и авторизации различных ERP модулей, интеграция CIFS/SMB java сервера.",
@@ -23,13 +25,13 @@ public class ResumeTestData {
                     "Создание JavaEE фреймворка для отказоустойчивого взаимодействия слабо-связанных сервисов (SOA-base архитектура, JAX-WS, JMS, AS Glassfish). Сбор статистики сервисов и информации о состоянии через систему мониторинга Nagios. Реализация онлайн клиента для администрирования и мониторинга системы по JMX (Jython/ Django).",
                     "Реализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа."));
             resume.addSection(SectionType.QUALIFICATIONS, new ListSection("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2"));
-/*
+
             resume.addSection(SectionType.EXPERIENCE, new OrganizationSection(new Organization("Java Online Projects", "http://javaops.ru", new Organization.Position("Автор проекта.",
                     "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10,1), LocalDate.of(2020, 12,1))),
                     new Organization("Java Online Projects", "http://javaops.ru", new Organization.Position("Автор проекта.",
                             "Создание, организация и проведение Java онлайн проектов и стажировок.", LocalDate.of(2013, 10,1), LocalDate.of(2020, 12,1)))));
             resume.addSection(SectionType.EDUCATION, new OrganizationSection(new Organization("Coursera", "https://www.coursera.org/course/progfun", new Organization.Position("Functional Programming Principles in Scala by Martin Odersky", "", LocalDate.of(2013, 03,1), LocalDate.of(2013, 05,1)))));
-*/
+
 
 /*            System.out.println(resume.getContacts());
 *//*            System.out.println(resume.getSections(SectionType.PERSONAL));

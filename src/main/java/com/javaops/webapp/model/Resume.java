@@ -67,6 +67,10 @@ public class Resume implements Comparable<Resume>, Serializable {
         sections.put(type, abstractSection);
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getContact(ContactType type) {
         return contacts.get(type);
     }
@@ -74,9 +78,6 @@ public class Resume implements Comparable<Resume>, Serializable {
     public AbstractSection getSection(SectionType type) {
         return sections.get(type);
     }
-
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -101,6 +102,4 @@ public class Resume implements Comparable<Resume>, Serializable {
         int compare = fullName.compareTo(resume.fullName);
         return compare != 0 ? compare: uuid.compareTo(resume.uuid);
     }
-
-
 }

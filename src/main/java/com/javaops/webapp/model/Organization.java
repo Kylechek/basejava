@@ -14,6 +14,8 @@ import java.util.Objects;
 public class Organization implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final Organization EMPTY = new Organization("", "", Position.EMPTY);
+
     private Link homePage;
     private List<Position> positions = new ArrayList<>();
 
@@ -57,6 +59,7 @@ public class Organization implements Serializable {
     }
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Position implements Serializable{
+        public static final Position EMPTY = new Position();
         private String title;
         private String description;
         @XmlJavaTypeAdapter(LocalDateAdapter.class)
