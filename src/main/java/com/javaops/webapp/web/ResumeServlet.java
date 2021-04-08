@@ -17,12 +17,11 @@ import java.util.List;
 
 public class ResumeServlet extends HttpServlet {
 
-    private Storage storage = Config.get().getStorage();
+    private Storage storage = Config.get().getStorage();;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
@@ -111,7 +110,6 @@ public class ResumeServlet extends HttpServlet {
                     if (section != null) {
                         for (Organization org : section.getOrganization()) {
                             List<Organization.Position> emptyFirstPositions = new ArrayList<>();
-                            emptyFirstPositions.add(Organization.Position.EMPTY);
                             emptyFirstPositions.addAll(org.getPositions());
                             emptyFirstOrganizations.add(new Organization(org.getHomePage(), emptyFirstPositions));
                         }
